@@ -1,6 +1,6 @@
 {
   "name": "Lucid",
-  "version": "v2",
+  "version": "2.0.0",
   "manifest_version": 2,
   "description": "Replace your new tab page with a greeting and simple notepad.",
   "homepage_url": "https://github.com/daneden/chrome-lucid",
