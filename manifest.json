@@ -1,13 +1,13 @@
 {
   "name": "Lucid",
-  "version": "1.1.1",
+  "version": "v2",
   "manifest_version": 2,
-  "description": "Replace your new tab page with a simple notepad.",
+  "description": "Replace your new tab page with a greeting and simple notepad.",
   "homepage_url": "https://github.com/daneden/chrome-lucid",
   "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "32" : "icons/tab32.png",
+    "64" : "icons/tab128.png",
+    "128" : "icons/tab128.png"
   },
   "default_locale": "en",
   "chrome_url_overrides": {

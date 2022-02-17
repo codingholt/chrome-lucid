@@ -48,6 +48,39 @@ const months = [
   "December",
 ]
 
+const words = [
+  "zero",
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+  "nine",
+  "ten",
+  "eleven",
+  "twelve",
+  "thirteen",
+  "fourteen",
+  "fifteen",
+  "sixteen",
+  "seventeen",
+  "eightteen",
+  "nineteen",
+  "twenty",
+  "twenty one",
+  "twenty two",
+  "twenty three",
+  "twenty four",
+  "twenty five",
+  "twenty six",
+  "twenty seven",
+  "twenty eight",
+  "twenty nine"
+];
+
 const key = "rhugtkeldibnridrlerlgcrrdvneevit"
 
 // Set up the store for our data
@@ -103,6 +136,20 @@ function listenerUpdate() {
   })
 }
 
+function timeInWords(h, m) {
+  return !m
+    ? `${words[h]} o' clock`
+    : `${
+        !(m % 30)
+          ? "half"
+          : !(m % 15)
+          ? "quarter"
+          : `${m <= 30 ? words[m] : words[60 - m]} ${`minute${
+              m > 1 ? "s" : ""
+            }`}`
+      } ${m <= 30 ? "past" : "to"} ${words[m <= 30 ? h : h + 1]}`;
+}
+
 function start(data) {
   // Greet the human
   let now = new Date()
@@ -116,8 +163,11 @@ function start(data) {
       ? "evening"
       : "afternoon"
 
+  let textTime  = timeInWords(now.getHours(), now.getMinutes())
+
   let g = document.querySelector(".greeting")
-  g.innerHTML = `Good ${broadTime}. It is ${timeString}.`
+  g.innerHTML = `Good ${broadTime}. It is ${timeString + ', '  + textTime}.`
+
 
   // Set up the notepad
   let notepad = document.querySelector(".notepad")
@@ -169,3 +219,6 @@ function start(data) {
     if (e.target !== notepad) notepad.scrollTop += e.deltaY
   }
 }
+
+
+// Complete the timeInWords function below.
