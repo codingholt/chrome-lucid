@@ -22,6 +22,8 @@ function readStore(storeKey, cb) {
   })
 }
 
+
+
 // Set up constants
 const weekdays = [
   "Sunday",
@@ -83,6 +85,8 @@ const words = [
 
 const key = "rhugtkeldibnridrlerlgcrrdvneevit"
 
+
+
 // Set up the store for our data
 // We want to track the notepad's contents and whether or not the human's current
 // location is in darkness.
@@ -136,23 +140,34 @@ function listenerUpdate() {
   })
 }
 
-function timeInWords(h, m) {
-  return !m
-    ? `${words[h]} o' clock`
-    : `${
-        !(m % 30)
-          ? "half"
-          : !(m % 15)
-          ? "quarter"
-          : `${m <= 30 ? words[m] : words[60 - m]} ${`minute${
-              m > 1 ? "s" : ""
-            }`}`
-      } ${m <= 30 ? "past" : "to"} ${words[m <= 30 ? h : h + 1]}`;
-}
+
 
 function start(data) {
-  // Greet the human
   let now = new Date()
+  let hours = now.getHours()
+  let minutes = now.getMinutes()
+
+  function timeInWords(hours, minutes) {
+    return !minutes
+      ? `${words[hours]} o' clock`
+      : `${
+          !(minutes % 30)
+            ? "half"
+            : !(minutes % 15)
+            ? "quarter"
+            : `${minutes <= 30 ? words[minutes] : words[60 - minutes]} ${`minutes{
+                minutes > 1 ? "s" : ""
+              }`}`
+        } ${minutes <= 30 ? "past" : "to"} ${words[minutes <= 30 ? hours : hours + 1]}`;
+
+  }
+  
+  function formatHours(hours) {
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    return hours;
+  }
+  // Greet the human
   let timeString = `${weekdays[now.getDay()]}, ${
     months[now.getMonth()]
   } ${now.getDate()}`
@@ -163,7 +178,7 @@ function start(data) {
       ? "evening"
       : "afternoon"
 
-  let textTime  = timeInWords(now.getHours(), now.getMinutes())
+  let textTime  = timeInWords(formatHours(hours), minutes)
 
   let g = document.querySelector(".greeting")
   g.innerHTML = `Good ${broadTime}. It is ${timeString + ', '  + textTime}.`
