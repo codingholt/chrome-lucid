@@ -155,7 +155,7 @@ function start(data) {
             ? "half"
             : !(minutes % 15)
             ? "quarter"
-            : `${minutes <= 30 ? words[minutes] : words[60 - minutes]} ${`minutes{
+            : `${minutes <= 30 ? words[minutes] : words[60 - minutes]} ${`minute${
                 minutes > 1 ? "s" : ""
               }`}`
         } ${minutes <= 30 ? "past" : "to"} ${words[minutes <= 30 ? hours : hours + 1]}`;
