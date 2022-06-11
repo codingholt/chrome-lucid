@@ -83,7 +83,7 @@ const words = [
   "twenty nine"
 ];
 
-const key = "rhugtkeldibnridrlerlgcrrdvneevit"
+const key = "chrome-lucid_RYwSZZKkLd4!CNX4K&8VKs7@4#f!cx"
 
 
 
@@ -235,5 +235,16 @@ function start(data) {
   }
 }
 
+function search(){
+  const searchQuery = googleSearch.value
+  window.open(`https://www.google.com/search?q=${searchQuery}`,"_self")
+}
+const googleSearch  = document.getElementById('googleSearch');
 
-// Complete the timeInWords function below.
+googleSearch.addEventListener("keyup", function(event) {
+  event.preventDefault();
+  if (event.key === 'Enter') {
+    search()
+  }
+});
+

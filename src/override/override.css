@@ -16,17 +16,21 @@
   padding: 0;
   position: relative;
 }
-
 html {
   background-color: var(--background);
   color: var(--foreground);
   display: flex;
-  font-size: 150%;
+  font-size: 200%;
   height: 100%;
   line-height: 1.75;
   transition-property: background-color, color;
   transition: 0.1s ease;
   overflow: hidden;
+}
+input{
+  border: none;
+  background-color: var(--background);
+  font-family: var(--fontStack)
 }
 
 @media (prefers-color-scheme: dark) {
